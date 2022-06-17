@@ -56,11 +56,10 @@ const backSpace = () => {
 }
 
 const doSum = (elem) => {
-    console.log("LAST VAL", lastValue);
+    console.log("LAST VAL", lastValue, lastClick);
     if (lastValue !== undefined && lastClick !== "=") {
-        const operationResult = sum(Number(lastValue), Number(resultSelector.innerText));
-        resultSelector.innerText = operationResult;
-        lastValue = operationResult;
+        doEq();
+        operation = "+";
         clearOnNext = true;
     } else {
         lastValue = Number(resultSelector.innerText);
@@ -71,9 +70,10 @@ const doSum = (elem) => {
 }
 const doSub = (elem) => {
     if (lastValue !== undefined && lastClick !== "=") {
-        const operationResult = sub(Number(lastValue), Number(resultSelector.innerText));
-        resultSelector.innerText = operationResult;
-        lastValue = operationResult;
+        doEq();
+        operation = "-";
+        clearOnNext = true;
+
     } else {
         lastValue = Number(resultSelector.innerText);
         operation = "-";
@@ -83,9 +83,9 @@ const doSub = (elem) => {
 }
 const doMul = (elem) => {
     if (lastValue !== undefined && lastClick !== "=") {
-        const operationResult = mul(Number(lastValue), Number(resultSelector.innerText));
-        resultSelector.innerText = operationResult;
-        lastValue = operationResult;
+        doEq();
+        operation = "*";
+        clearOnNext = true;
     } else {
         lastValue = Number(resultSelector.innerText);
         operation = "*";
@@ -95,9 +95,9 @@ const doMul = (elem) => {
 }
 const doDiv = (elem) => {
     if (lastValue !== undefined && lastClick !== "=") {
-        const operationResult = div(Number(lastValue), Number(resultSelector.innerText));
-        resultSelector.innerText = operationResult;
-        lastValue = operationResult;
+        doEq();
+        operation = "/";
+        clearOnNext = true;
     } else {
         lastValue = Number(resultSelector.innerText);
         operation = "/";
@@ -136,7 +136,6 @@ const doEq = (elem) => {
     } else {
         resultSelector.innerText = "ERROR";
     }
-    operation = "";
     console.log(lastValue);
     lastClick = "=";
 }
