@@ -51,12 +51,12 @@ const backSpace = () => {
     if (resultSelector.innerText != 0) {
         let value = resultSelector.innerText;
         resultSelector.innerText = value.substring(0, value.length - 1);
-        console.log(value, value.substring(1));
+        // console.log(value, value.substring(1));
     }
 }
 
 const doSum = (elem) => {
-    console.log("LAST VAL", lastValue, lastClick);
+    // console.log("LAST VAL", lastValue, lastClick);
     if (lastValue !== undefined && lastClick !== "=") {
         doEq();
         operation = "+";
@@ -106,7 +106,7 @@ const doDiv = (elem) => {
     lastClick = "/";
 }
 const doEq = (elem) => {
-    console.log(Number(lastValue), Number(resultSelector.innerText), operation);
+    // console.log(Number(lastValue), Number(resultSelector.innerText), operation);
     if (lastValue !== undefined) {
         let operationResult;
         switch (operation) {
@@ -136,7 +136,7 @@ const doEq = (elem) => {
     } else {
         resultSelector.innerText = "ERROR";
     }
-    console.log(lastValue);
+    // console.log(lastValue);
     lastClick = "=";
 }
 // Create events
